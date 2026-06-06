@@ -23,8 +23,8 @@ public class Main {
         Banco banco;
         if (opcao == 's') {
             System.out.println("Entre com o valor do deposito: ");
-            double saldo = sc.nextDouble();
-            banco = new Banco(number, name, saldo);
+            double initialDeposit = sc.nextDouble();
+            banco = new Banco(number, name, initialDeposit);
         } else {
             banco = new Banco(number, name);
         }
