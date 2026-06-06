@@ -10,10 +10,10 @@ public class Banco {
 
     }
 
-    public Banco(int number, String name, double saldo) {
+    public Banco(int number, String name, double initialDeposit) {
         this.number = number;
         this.name = name;
-        this.saldo = saldo;
+        addSaldo(initialDeposit);
     }
 
     public Banco(int number, String name) {
