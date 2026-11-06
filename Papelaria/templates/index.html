@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Papelê | Papelaria Criativa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <div class="barra-superior">
+        <p>Um mundo de criatividade começa aqui!</p>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+
+        <div class="logo">
+            <a href="/">Papelê<span>.</span></a>
+        </div>
+
+        <div class="pesquisa">
+            <input
+                type="text"
+                id="campoPesquisa"
+                placeholder="O que você está procurando?"
+            >
+
+            <button type="button" id="botaoPesquisar">
+                Pesquisar
+            </button>
+        </div>
+
+        <div class="acoes">
+            <a href="#" id="botaoMinhaConta">Minha conta</a>
+            <a href="#">♡ Favoritos</a>
+
+            <a href="#" id="botaoCarrinho">
+                🛒 Carrinho
+                <span id="contadorCarrinho">0</span>
+            </a>
+        </div>
+
+    </header>
+
+    <!-- NAVEGAÇÃO -->
+    <nav class="navegacao">
+        <a href="#produtos">Todos os produtos</a>
+        <a href="#categorias">Categorias</a>
+        <a href="#destaques">Destaques</a>
+    </nav>
+
+    <!-- BANNER PRINCIPAL -->
+    <section class="banner" id="destaques">
+
+        <img
+           src="{{ url_for('static', filename='imagens/capa.jpg') }}"
+           alt="Materiais de papelaria"
+           class="banner-imagem">
+
+        <div class="banner-conteudo">
+
+
+            <span class="subtitulo">PAPELARIA CRIATIVA</span>
+
+            <h1>Ideias que ganham vida no papel.</h1>
+
+            <p>
+                Encontre tudo para estudar, trabalhar,
+                organizar e deixar sua criatividade fluir.
+            </p>
+
+            <a href="#produtos" class="botao-banner">
+                Explorar produtos
+            </a>
+        </div>
+
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section class="secao" id="categorias">
+
+        <div class="titulo-secao">
+            <div>
+                <span class="subtitulo">EXPLORE NOSSA LOJA</span>
+                <h2>Encontre sua categoria</h2>
+            </div>
+        </div>
+
+        <div class="categorias">
+
+            <a href="#produtos" class="categoria categoria-verde">
+                <span>📚</span>
+                <h3>Cadernos</h3>
+            </a>
+
+            <a href="#produtos" class="categoria categoria-rosa">
+                <span>🖊️</span>
+                <h3>Canetas</h3>
+            </a>
+
+            <a href="#produtos" class="categoria categoria-amarela">
+                <span>✏️</span>
+                <h3>Lápis</h3>
+            </a>
+
+            <a href="#produtos" class="categoria categoria-creme">
+                <span>📄</span>
+                <h3>Papéis</h3>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- CATÁLOGO DE PRODUTOS -->
+    <section class="secao produtos-secao" id="produtos">
+
+        <div class="titulo-secao">
+            <div>
+                <span class="subtitulo">ESCOLHIDOS PARA VOCÊ</span>
+                <h2>Queridinhos da semana</h2>
+            </div>
+
+            <a href="#produtos" class="ver-todos">
+                Ver todos →
+            </a>
+        </div>
+
+        <div class="produtos" id="listaProdutos">
+            <p>Carregando produtos...</p>
+        </div>
+
+    </section>
+
+    <!-- CHAMADA FINAL -->
+    <section class="chamada-final">
+
+        <div class="chamada-conteudo">
+            <h2>Seu próximo projeto começa aqui!</h2>
+
+            <p>
+                Descubra produtos que tornam seus estudos
+                e seu dia a dia mais criativos.
+            </p>
+        </div>
+
+        <a href="#produtos">Conheça nossos produtos</a>
+
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+
+        <div class="rodape-conteudo">
+
+            <div class="rodape-marca">
+                <h2>Papelê.</h2>
+                <p>Sua papelaria, seu universo de criatividade.</p>
+            </div>
+
+            <div class="rodape-links">
+                <h3>Navegação</h3>
+                <a href="#produtos">Produtos</a>
+                <a href="#categorias">Categorias</a>
+            </div>
+
+        </div>
+
+        <p class="direitos">
+            © 2026 Papelê. Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+    <!-- JANELA DO CARRINHO -->
+    <div class="carrinho-modal" id="carrinhoModal">
+
+        <div class="carrinho-conteudo">
+
+            <div class="carrinho-cabecalho">
+                <h2>Meu carrinho</h2>
+
+                <button
+                    type="button"
+                    id="fecharCarrinho"
+                    aria-label="Fechar"
+                >
+                    ✕
+                </button>
+            </div>
+
+            <div id="listaCarrinho">
+                <p>Seu carrinho está vazio.</p>
+            </div>
+
+            <div class="carrinho-rodape">
+
+                <div class="carrinho-total">
+                    <strong>Total:</strong>
+                    <strong id="valorTotalCarrinho">R$ 0,00</strong>
+                </div>
+
+                <button type="button" id="finalizarCompra">
+                    Finalizar compra
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JANELA DE LOGIN E CADASTRO -->
+    <div class="autenticacao-modal" id="autenticacaoModal">
+
+        <div class="autenticacao-conteudo">
+
+            <div class="autenticacao-cabecalho">
+                <h2 id="tituloAutenticacao">Entre na sua conta</h2>
+
+                <button
+                    type="button"
+                    id="fecharAutenticacao"
+                    aria-label="Fechar"
+                >
+                    ✕
+                </button>
+            </div>
+
+            <!-- FORMULÁRIO DE LOGIN -->
+            <form id="formLogin">
+
+                <label for="loginEmail">E-mail</label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    required
+                    placeholder="Seu e-mail"
+                >
+
+                <label for="loginSenha">Senha</label>
+
+                <input
+                    type="password"
+                    id="loginSenha"
+                    required
+                    placeholder="Sua senha"
+                >
+
+                <button type="submit">Entrar</button>
+
+                <p>
+                    Ainda não tem conta?
+                    <a href="#" id="mostrarCadastro">Cadastre-se</a>
+                </p>
+
+            </form>
+
+            <!-- FORMULÁRIO DE CADASTRO -->
+            <form id="formCadastro" style="display: none;">
+
+                <label for="cadastroNome">Nome completo</label>
+
+                <input
+                    type="text"
+                    id="cadastroNome"
+                    required
+                    placeholder="Seu nome"
+                >
+
+                <label for="cadastroEmail">E-mail</label>
+
+                <input
+                    type="email"
+                    id="cadastroEmail"
+                    required
+                    placeholder="Seu e-mail"
+                >
+
+                <label for="cadastroSenha">Senha</label>
+
+                <input
+                    type="password"
+                    id="cadastroSenha"
+                    required
+                    minlength="6"
+                    placeholder="Crie uma senha"
+                >
+
+                <button type="submit">Criar minha conta</button>
+
+                <p>
+                    Já tem uma conta?
+                    <a href="#" id="mostrarLogin">Fazer login</a>
+                </p>
+
+            </form>
+
+            <p id="mensagemAutenticacao"></p>
+
+        </div>
+
+    </div>
+
+    <!-- JANELA DA CONTA DO CLIENTE -->
+    <div class="autenticacao-modal" id="contaModal">
+
+        <div class="autenticacao-conteudo">
+
+            <div class="autenticacao-cabecalho">
+                <h2>Minha conta</h2>
+
+                <button
+                    type="button"
+                    id="fecharConta"
+                    aria-label="Fechar"
+                >
+                    ✕
+                </button>
+            </div>
+
+            <div class="dados-conta">
+                <h3>Olá, <span id="nomeCliente">Cliente</span>!</h3>
+                <p id="emailCliente"></p>
+            </div>
+
+            <div class="historico-conta">
+                <h3>Meus pedidos</h3>
+
+                <div id="listaMeusPedidos">
+                    <p>Carregando seus pedidos...</p>
+                </div>
+            </div>
+
+            <button type="button" id="botaoSairConta">
+                Sair da conta
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT: carregado uma única vez -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
